@@ -1,0 +1,51 @@
+.add-users {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 0.3em;
+    max-width: 100rem;
+    margin: 2rem auto;
+}
+
+.add-users input {
+    width: 450px;
+    display: flex;
+    padding: 0.1rem;
+    margin: 5px 10px;
+    border: 1px solid #d7d4d4;
+}
+
+.add-users label {
+    margin: 5px 10px;
+    display: flex;
+    font-size: small;
+    font-weight: 550;
+}
+
+.add-users button {
+    background-color: purple;
+    color: white;
+    margin: 5px 10px;
+    border-style: none;
+    align-self: flex-start;
+    width: auto;
+}
+
+.add-users input:focus {
+    outline: none;
+    border-color: #4f005f;
+}
+
+.add-users button:hover {
+    background-color: rgb(66, 19, 66);
+}
+
+.add-users.invalid input,
+.add-users.invalid label {
+    border-color: red;
+}
+
+@media (max-width: 650px) {
+    .add-users button {
+        width: 100%;
+    }
+}
