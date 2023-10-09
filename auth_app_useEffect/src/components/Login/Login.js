@@ -11,12 +11,14 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
-  // if the dependencies are empty, this will run only once the component is mounted
+  // if the dependencies are empty, this will run only once, when the component is mounted
   // useEffect(() => {}, []);
   // if there are dependencies, it will run whenever there are changes in them, including the first time
   // useEffect(() => {}, [something]);
-  // if there is a clean up function, the cleanup will run whenver there are changes in the dependencies and when it is removed from the DOM, however not the first time
+  // if there is a clean up function, the cleanup will run whenver there are changes in the dependencies 
+  // and when it is removed from the DOM, however not the first time
   // if there is a clean up function and no dependencies, the cleanup function will only run when the component is removed
+
   // in short, effects do take effect from the first time, what happens after depends on the dependencies list.
   // if there is a list, then with the changes as well as the last time
   // if there is not list, the only the first time
