@@ -6,7 +6,6 @@ import EventDetailPage, {
   loader as eventDetailLoader,
   action as deleteEventAction,
 } from './pages/EventDetail';
-import EventsPage, { loader as eventsLoader } from './pages/Events';
 import EventsRootLayout from './pages/EventsRoot';
 import HomePage from './pages/Home';
 import NewEventPage from './pages/NewEvent';
@@ -16,6 +15,12 @@ import NewsletterPage, { action as newsletterAction } from './pages/Newsletter';
 import AuthenticationPage, { action as authAction } from './pages/Authentication';
 import { action as logoutAction } from './pages/Logout';
 import { checkAuthLoader, tokenLoader } from './util/auth'
+import { Suspense, lazy } from 'react';
+// import EventsPage, { loader as eventsLoader } from './pages/Events';
+// this is an example of lazy loading
+// since import returns a promise, gotta wrap it with lazy instead
+// but the element itself has to be wrapped with Suspense since it will take time to load the page
+const EventsPage = lazy(() => import('./pages/Events'));
 
 const router = createBrowserRouter([
   {
@@ -32,8 +37,13 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <EventsPage />,
-            loader: eventsLoader,
+            element: (
+              <Suspense fallback={<p>Loading...</p>}>
+                <EventsPage />
+              </Suspense>
+            ),
+            loader: () => import('./pages/Events').then(module => module.loader()) //this is an example of lazy loading
+            // loader: eventsLoader,
           },
           {
             path: ':eventId',

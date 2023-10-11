@@ -20,7 +20,7 @@ function RootLayout() {
       // null means we don't submit any data, like form data
       submit(null, { action: '/login', method: 'post' });
     }, tokenDuration);
-  }, [token]);
+  }, [token, submit]);
 
   return (
     <>
